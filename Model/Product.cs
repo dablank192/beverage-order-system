@@ -11,6 +11,7 @@ public class Product
     public string? ProductImageUrl {get; set;}
     public bool? IsAvailable {get; set;}
 
+
     public List<OrderItems>? OrderItems {get; set;}
     public Categories? Categories {get; set;}
 }

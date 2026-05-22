@@ -24,6 +24,7 @@
   <ItemGroup>
     <Folder Include="DbConfig\" />
     <Folder Include="Dto\" />
+    <Folder Include="Feature\Menu\AddMenuItem\" />
     <Folder Include="Infrastructure\" />
     <Folder Include="Model\" />
   </ItemGroup>

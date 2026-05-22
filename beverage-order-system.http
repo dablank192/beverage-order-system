@@ -5,5 +5,17 @@ Accept: application/json
 
 ### Get Menu Item
 
-GET {{beverage_order_system_HostAddress}}/api/v1/menu?pageindex=100&pagesize=100
+GET {{beverage_order_system_HostAddress}}/api/v1/menu?pageindex=1&pagesize=100
 Accept: application/json
+
+### Add Menu Item
+POST {{beverage_order_system_HostAddress}}/api/v1/menu/new-item
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "milk coffee",
+    "categoryid": 0,
+    "baseprice": 0,
+    "isavailable": true    
+}

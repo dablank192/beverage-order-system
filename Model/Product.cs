@@ -6,7 +6,7 @@ public class Product
 {
     public int Id {get; set;}
     public int CategoryId {get; set;}
-    public required string Name {get; set;}
+    public string? Name {get; set;}
     public decimal? BasePrice {get; set;}
     public string? ProductImageUrl {get; set;}
     public bool? IsAvailable {get; set;}

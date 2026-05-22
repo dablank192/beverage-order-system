@@ -1,4 +1,5 @@
 using System;
+using beverage_order_system.Feature.Menu.AddMenuItem;
 using beverage_order_system.Feature.Menu.GetMenu;
 using Carter;
 
@@ -10,6 +11,7 @@ public class MenuApi : ICarterModule
     {
         var group = app.MapGroup("api/v1/menu");
 
-        GetItem.MapEndpoint(group);
+        GetItem.MapEndpoint(group); 
+        AddItem.MapEndpoint(group);
     }
 }

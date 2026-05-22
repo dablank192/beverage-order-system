@@ -14,6 +14,8 @@ public class AppDbContext : DbContext
     public DbSet<OrderItemsTopping> OrderItemsTopping {get; set;}
     public DbSet<Product> Product {get; set;}
     public DbSet<Topping> Topping {get; set;}
+    public DbSet<User> User {get; set;}
+    public DbSet<RefreshToken> RefreshToken {get; set;}
 
     public void Configure (ModelBuilder builder)
     {

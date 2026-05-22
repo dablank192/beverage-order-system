@@ -22,7 +22,7 @@ public class GetItem(
         {
             return Results.Ok(await sender.Send(req));
         })
-        .WithName("Get Menu")
+        .WithName("Get Menu (For Customer")
         .AllowAnonymous()
         .Produces<Result>(StatusCodes.Status200OK);
     }

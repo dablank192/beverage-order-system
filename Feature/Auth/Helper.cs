@@ -34,7 +34,7 @@ public class Helper(
         var accessToken = new JwtSecurityToken(
             signingCredentials: credentials,
             claims: claim,
-            expires: DateTime.Now.AddMinutes(15)
+            expires: DateTime.UtcNow.AddMinutes(15)
         );
 
         return new JwtSecurityTokenHandler().WriteToken(accessToken);

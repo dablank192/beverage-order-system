@@ -1,5 +1,7 @@
 using System;
+using beverage_order_system.Feature.Auth.RefreshToken;
 using beverage_order_system.Feature.Auth.UserLogin;
+using beverage_order_system.Feature.Auth.UserRegister;
 using Carter;
 
 namespace beverage_order_system.Feature.Auth;
@@ -12,5 +14,7 @@ public class AuthApi : ICarterModule
         .WithTags("User Auth");
 
         Login.MapEndpoint(group);
+        Refresh.MapEndpoint(group);
+        Register.MapEndpoint(group);
     }
 }

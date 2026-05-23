@@ -9,7 +9,7 @@ public class RefreshToken
     public string? Token {get; set;}
     public DateTime ExpiredAt {get; set;}
     public bool IsRevoked {get; set;}
-    public DateTime CreatedAt {get; set;} = DateTime.Now;
+    public DateTime CreatedAt {get; set;} = DateTime.UtcNow;
 
     public User? User {get; set;}
 }

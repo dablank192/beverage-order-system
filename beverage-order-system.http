@@ -19,3 +19,29 @@ Content-Type: application/json
     "baseprice": 0,
     "isavailable": true    
 }
+
+### User Register
+POST {{beverage_order_system_HostAddress}}/api/v1/auth/register
+Accept: application/json
+Content-Type: application/json
+
+{
+    "username": "nguyen doe1",
+    "password": "testing1"
+}
+
+### User Login
+POST {{beverage_order_system_HostAddress}}/api/v1/auth/login
+Content-Type: application/json
+
+{
+    "username": "nguyen doe1",
+    "password": "testing1"
+}
+
+### Refresh Token
+POST {{beverage_order_system_HostAddress}}/api/v1/auth/refresh
+Accept: application/json
+Cookie: x-refresh-token=ufVm1tnT6ze8YrpFR%2F%2FMiLGdCbXzjd49bUzVuOhrt3nCkMllRPhO5gNzJOnQRgRdXYRwWmDLRehMsWG7eukDGg%3D%3D
+
+{}

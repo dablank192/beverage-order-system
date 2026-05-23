@@ -18,6 +18,8 @@ builder.Services.AddMediatR(config =>
     config.RegisterServicesFromAssemblyContaining<Program>();
 });
 
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddCarter();
 
 var connectionString = builder.Configuration.GetConnectionString("Default");

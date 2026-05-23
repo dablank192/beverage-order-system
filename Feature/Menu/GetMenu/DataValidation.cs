@@ -26,6 +26,6 @@ public class DataValidation : AbstractValidator<Command>
 
         RuleFor(t => t.PageSize)
         .NotNull().WithMessage("Missing Params: PageSize")
-        .GreaterThanOrEqualTo(1).WithMessage("Page Size can not be less than 1");;
+        .GreaterThanOrEqualTo(1).WithMessage("Page Size can not be less than 1");
     }
 }

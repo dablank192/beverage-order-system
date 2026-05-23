@@ -12,6 +12,7 @@
     <PackageReference Include="Carter" Version="10.0.0" />
     <PackageReference Include="FluentValidation" Version="12.1.1" />
     <PackageReference Include="MediatR" Version="14.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.8">
@@ -19,11 +20,19 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.18.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="DbConfig\" />
     <Folder Include="Dto\" />
+    <Folder Include="Exception\" />
+    <Folder Include="Exception\AuthException\" />
+    <Folder Include="Exception\UserException\" />
+    <Folder Include="Feature\Auth\" />
+    <Folder Include="Feature\Auth\RefreshToken\" />
+    <Folder Include="Feature\Auth\UserLogin\" />
+    <Folder Include="Feature\Auth\UserRegister\" />
     <Folder Include="Feature\Menu\AddMenuItem\" />
     <Folder Include="Infrastructure\" />
     <Folder Include="Model\" />

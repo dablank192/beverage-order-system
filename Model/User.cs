@@ -9,7 +9,7 @@ public class User
     public required string Password {get; set;}
     public string? Email {get; set;}
     public string? PhoneNumber {get; set;}
-    public DateTime CreatedAt {get; set;}
+    public DateTime CreatedAt {get; set;} = DateTime.Now;
 
     public List<RefreshToken>? RefreshToken {get; set;} 
 }

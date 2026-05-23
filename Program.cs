@@ -1,6 +1,11 @@
+using System.Text;
+using beverage_order_system.Feature.Auth;
 using beverage_order_system.Infrastructure;
 using Carter;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +27,48 @@ builder.Services.AddDbContext<AppDbContext>(option =>
     option.UseNpgsql(connectionString);
 });
 
+builder.Services.AddScoped<IHelper, Helper>();
+
+builder.Services.AddAuthentication(option =>
+{
+    option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(option =>
+{
+    option.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey= true,
+        ValidateIssuer= false,
+        ValidateAudience= false,
+        ValidateLifetime= true,
+        IssuerSigningKey= new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)
+        )
+    };
+    
+    option.Events = new JwtBearerEvents
+    {
+        OnMessageReceived= context =>
+        {
+            var accessToken = context.Request.Cookies["x-access-token"];
+
+            if (!string.IsNullOrEmpty(accessToken))
+            {
+                context.Token = accessToken;
+            }
+
+            return Task.CompletedTask;
+        }
+    };
+});
+
+builder.Services.AddAuthentication();
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapCarter();
 

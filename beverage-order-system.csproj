@@ -38,4 +38,11 @@
     <Folder Include="Model\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="beverage-order-system.Test\**" />
+    <Content Remove="beverage-order-system.Test\**" />
+    <EmbeddedResource Remove="beverage-order-system.Test\**" />
+    <None Remove="beverage-order-system.Test\**" />
+  </ItemGroup>
+
 </Project>

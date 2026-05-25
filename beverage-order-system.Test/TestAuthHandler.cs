@@ -21,7 +21,7 @@ public class TestAuthHandler : AuthenticationHandler<AuthenticationSchemeOptions
         var claims = new[]
         {
             new Claim("UserId", Guid.NewGuid().ToString()),
-            new Claim(ClaimTypes.Role, "Admin"),
+            new Claim("Username", "Testing"),
             new Claim(ClaimTypes.Name, "Testing")
         };
 
@@ -30,5 +30,7 @@ public class TestAuthHandler : AuthenticationHandler<AuthenticationSchemeOptions
         var ticket = new AuthenticationTicket(principal, "TestAuth");
 
         return Task.FromResult(AuthenticateResult.Success(ticket));
+
+        //nhớ hỏi AI giải thích đoạn code này
     }
 }

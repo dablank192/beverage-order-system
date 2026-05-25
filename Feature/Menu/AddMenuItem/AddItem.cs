@@ -21,6 +21,7 @@ public class AddItem(
             return Results.Created();
         })
         .WithName("Add Item to menu (Admin)")
+        .RequireAuthorization()
         .Produces<Result>(StatusCodes.Status201Created)
         .ProducesValidationProblem();
     }

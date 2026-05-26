@@ -18,6 +18,7 @@ public class DataValidation : AbstractValidator<Command>
     public DataValidation()
     {
         RuleFor(t => t.Name)
+        .NotEmpty().WithMessage("Product name must not be empty")
         .MaximumLength(50);
     }
 }

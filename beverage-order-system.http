@@ -1,4 +1,6 @@
 @beverage_order_system_HostAddress = http://localhost:5234
+@access_token = x-access-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIwMTllNTVmYS1jYmI5LTdmM2MtYWZiYi00YmY5YmQzOTM0NzgiLCJVc2VybmFtZSI6Im5ndXllbiBkb2UxIiwiZXhwIjoxNzc5ODIyODg2fQ.ppDntWlbwZs1qFUEPvwe58UBB_DdrzZ7e6BY6bM0ozA
+@refresh_token = 
 
 GET {{beverage_order_system_HostAddress}}/weatherforecast/
 Accept: application/json
@@ -45,3 +47,16 @@ Accept: application/json
 Cookie: x-refresh-token=ufVm1tnT6ze8YrpFR%2F%2FMiLGdCbXzjd49bUzVuOhrt3nCkMllRPhO5gNzJOnQRgRdXYRwWmDLRehMsWG7eukDGg%3D%3D
 
 {}
+
+### Update Product
+PATCH {{beverage_order_system_HostAddress}}/api/v1/menu/1/item-update
+Accept: application/json
+Content-Type: application/json
+Cookie: {{access_token}}
+
+{
+    "name": "mi",
+    "categoryid": 4,
+    "baseprice": 100000,
+    "isavailable": false
+}

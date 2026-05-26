@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="Carter" Version="10.0.0" />
     <PackageReference Include="FluentValidation" Version="12.1.1" />
+    <PackageReference Include="Mapster" Version="10.0.7" />
     <PackageReference Include="MediatR" Version="14.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.5" />
@@ -34,6 +35,7 @@
     <Folder Include="Feature\Auth\UserLogin\" />
     <Folder Include="Feature\Auth\UserRegister\" />
     <Folder Include="Feature\Menu\AddMenuItem\" />
+    <Folder Include="Feature\Menu\UpdateMenuItem\" />
     <Folder Include="Infrastructure\" />
     <Folder Include="Model\" />
   </ItemGroup>

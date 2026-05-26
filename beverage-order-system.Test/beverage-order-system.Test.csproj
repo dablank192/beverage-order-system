@@ -26,4 +26,8 @@
     <ProjectReference Include="..\beverage-order-system.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Feature\Menu\GetMenu\" />
+  </ItemGroup>
+
 </Project>

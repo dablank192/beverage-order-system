@@ -48,7 +48,7 @@ public class GetItem(
         ))
         .ToListAsync(ct);
 
-        var totalPage = totalRecord/req.PageSize;
+        var totalPage = (int)Math.Ceiling(totalRecord/(double)req.PageSize);
 
         var result = new Result (
             Data: item,

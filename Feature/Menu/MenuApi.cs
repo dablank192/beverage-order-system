@@ -1,5 +1,6 @@
 using System;
 using beverage_order_system.Feature.Menu.AddMenuItem;
+using beverage_order_system.Feature.Menu.DeleteMenuItem;
 using beverage_order_system.Feature.Menu.GetMenu;
 using beverage_order_system.Feature.Menu.UpdateMenuItem;
 using Carter;
@@ -15,5 +16,6 @@ public class MenuApi : ICarterModule
         GetItem.MapEndpoint(group); 
         AddItem.MapEndpoint(group);
         UpdateItem.MapEndpoint(group);
+        DeleteItem.MapEndpoint(group);
     }
 }

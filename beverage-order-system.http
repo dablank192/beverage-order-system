@@ -1,5 +1,5 @@
 @beverage_order_system_HostAddress = http://localhost:5234
-@access_token = x-access-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIwMTllNTVmYS1jYmI5LTdmM2MtYWZiYi00YmY5YmQzOTM0NzgiLCJVc2VybmFtZSI6Im5ndXllbiBkb2UxIiwiZXhwIjoxNzc5ODIyODg2fQ.ppDntWlbwZs1qFUEPvwe58UBB_DdrzZ7e6BY6bM0ozA
+@access_token = x-access-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIwMTllNTVmYS1jYmI5LTdmM2MtYWZiYi00YmY5YmQzOTM0NzgiLCJVc2VybmFtZSI6Im5ndXllbiBkb2UxIiwiZXhwIjoxNzc5OTAxMzY4fQ.8kxG6O3d1kGdol-JOv9-8pjD_SnTq8gi9fla9oz_Hl4
 @refresh_token = 
 
 GET {{beverage_order_system_HostAddress}}/weatherforecast/
@@ -14,11 +14,12 @@ Accept: application/json
 POST {{beverage_order_system_HostAddress}}/api/v1/menu/new-item
 Accept: application/json
 Content-Type: application/json
+Cookie: {{access_token}}
 
 {
     "name": "milk coffee",
-    "categoryid": 0,
-    "baseprice": 0,
+    "categoryid": 2,
+    "baseprice": 100000,
     "isavailable": true    
 }
 
@@ -60,3 +61,7 @@ Cookie: {{access_token}}
     "baseprice": 100000,
     "isavailable": false
 }
+
+### Delete Product
+DELETE {{beverage_order_system_HostAddress}}/api/v1/menu/3/delete
+Cookie: {{access_token}}

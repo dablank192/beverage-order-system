@@ -29,12 +29,14 @@
     <Folder Include="Dto\" />
     <Folder Include="Exception\" />
     <Folder Include="Exception\AuthException\" />
+    <Folder Include="Exception\MenuException\" />
     <Folder Include="Exception\UserException\" />
     <Folder Include="Feature\Auth\" />
     <Folder Include="Feature\Auth\RefreshToken\" />
     <Folder Include="Feature\Auth\UserLogin\" />
     <Folder Include="Feature\Auth\UserRegister\" />
     <Folder Include="Feature\Menu\AddMenuItem\" />
+    <Folder Include="Feature\Menu\DeleteMenuItem\" />
     <Folder Include="Feature\Menu\UpdateMenuItem\" />
     <Folder Include="Infrastructure\" />
     <Folder Include="Model\" />

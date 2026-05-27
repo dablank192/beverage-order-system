@@ -18,6 +18,9 @@ builder.Services.AddMediatR(config =>
     config.RegisterServicesFromAssemblyContaining<Program>();
 });
 
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
+
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddCarter();
@@ -73,6 +76,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapCarter();
+
+app.UseExceptionHandler();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

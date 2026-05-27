@@ -1,4 +1,5 @@
 using System;
+using beverage_order_system.Exception.MenuException;
 using beverage_order_system.Infrastructure;
 using beverage_order_system.Model;
 using Mapster;
@@ -32,7 +33,8 @@ public class UpdateItem(
 
     public async Task<Result> Handle (Command req, CancellationToken ct)
     {
-        var product = await dbContext.Product.FirstOrDefaultAsync(t => t.Id == req.ProductId, ct);
+        var product = await dbContext.Product.FirstOrDefaultAsync(t => t.Id == req.ProductId, ct)
+        ?? throw new ProductNotFoundException();
 
         var config = new TypeAdapterConfig();
         config.NewConfig<SubCommand, Product>().IgnoreNullValues(true);

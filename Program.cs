@@ -4,6 +4,7 @@ using beverage_order_system.Infrastructure;
 using Carter;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using FluentValidation;
 using Microsoft.IdentityModel.Tokens;
 
 
@@ -13,9 +14,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
+
 builder.Services.AddMediatR(config =>
 {
     config.RegisterServicesFromAssemblyContaining<Program>();
+    config.AddOpenBehavior(typeof(ValidationBehaviour<,>));
 });
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
@@ -72,12 +76,13 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+app.UseExceptionHandler();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapCarter();
 
-app.UseExceptionHandler();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

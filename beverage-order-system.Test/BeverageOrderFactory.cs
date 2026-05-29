@@ -26,7 +26,7 @@ public class BeverageOrderFactory : WebApplicationFactory<Program>, IAsyncLifeti
     protected override void ConfigureWebHost(IWebHostBuilder builder) 
     //can thiệp vào quá trình khởi động ứng dụng,
     //và thay đổi các cấu hình thiết lập môi trường chạy của ứng dụng
-    //trước khi ứng dụng được chạy thực tếthông qua IWebHostBuilder
+    //trước khi ứng dụng được chạy thực tế thông qua IWebHostBuilder
     {
         builder.ConfigureServices(service =>
         {

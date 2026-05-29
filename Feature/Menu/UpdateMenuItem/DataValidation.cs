@@ -28,4 +28,16 @@ public class DataValidation : AbstractValidator<SubCommand>
         });
     }
 }
+
+public class CommandValidation : AbstractValidator<Command>
+{
+    public CommandValidation()
+    {
+        RuleFor(t => t.ProductId)
+        .GreaterThan(0)
+        .WithMessage("Validator must be greater than 0");
+        
+        RuleFor(t => t.Data).SetValidator(new DataValidation());
+    }
+}
  

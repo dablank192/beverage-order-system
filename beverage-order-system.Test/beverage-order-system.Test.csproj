@@ -27,7 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Feature\Menu\DeleteMenuItem\" />
     <Folder Include="Feature\Menu\GetMenu\" />
+    <Folder Include="Feature\Menu\UpdateMenuItem\" />
   </ItemGroup>
 
 </Project>

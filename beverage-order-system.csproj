@@ -39,6 +39,8 @@
     <Folder Include="Feature\Menu\AddMenuItem\" />
     <Folder Include="Feature\Menu\DeleteMenuItem\" />
     <Folder Include="Feature\Menu\UpdateMenuItem\" />
+    <Folder Include="Feature\Order\" />
+    <Folder Include="Feature\Order\AddOrderItem\" />
     <Folder Include="Infrastructure\" />
     <Folder Include="Model\" />
   </ItemGroup>

@@ -32,7 +32,7 @@ public class AddItem(
     }
 
     public async Task<Result> Handle(Command req, CancellationToken ct)
-    {
+    {        
         var productPrice = await dbContext.Product.Where(t => t.Id == req.ProductId)
         .Select(t => t.BasePrice)
         .FirstOrDefaultAsync(ct);
@@ -46,10 +46,18 @@ public class AddItem(
         };
 
         dbContext.OrderItems.Add(newOrderItem);
+
+        var item = await dbContext.OrderItems.Where(t => t.OrderId == req.OrderId)
+        .Include(t => t.Order)
+        .FirstOrDefaultAsync(ct);
+
+        var totalPrice = item?.UnitPrice * req.Quantity;
+        item?.Order?.TotalAmount = totalPrice;
+        
         await dbContext.SaveChangesAsync(ct);
 
-        return new Result();
+        // Chưa test, hôm sau cần test
 
-        //tạm thời là vậy đã, chưa chốt logic, chưa test
+        return new Result();
     }
 }

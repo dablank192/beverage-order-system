@@ -1,6 +1,7 @@
 using System;
 using beverage_order_system.Infrastructure;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace beverage_order_system.Feature.Order.CreateOrder;
 
@@ -15,8 +16,8 @@ public class NewOrder(
     public static void MapEndpoint (RouteGroupBuilder group)
     {
         group.MapPost("/new-order", async(
-            ISender sender,
-            Command req
+            [FromServices]ISender sender,
+            [FromBody]Command req
         ) =>
         {
             return Results.Ok(await sender.Send(req));

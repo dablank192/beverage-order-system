@@ -65,3 +65,12 @@ Cookie: {{access_token}}
 ### Delete Product
 DELETE {{beverage_order_system_HostAddress}}/api/v1/menu/3/delete
 Cookie: {{access_token}}
+
+### Create Item
+POST {{beverage_order_system_HostAddress}}/api/v1/order/new-order
+Accept: application/json
+Content-Type: application/json
+
+{
+    
+}

@@ -21,6 +21,10 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(builder);
 
+        builder.HasSequence<int>("DailyOrderNumber_Seq")
+        .StartsAt(1)
+        .IncrementsBy(1);
+
         builder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
     }
 }

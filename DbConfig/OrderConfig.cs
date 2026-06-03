@@ -16,5 +16,9 @@ public class OrderConfig : IEntityTypeConfiguration<Order>
         .IsUnique();
         builder.Property(t => t.DailyOrderNumber)
         .IsRequired();
+
+        builder.Property(t => t.DailyOrderNumber)
+        .IsRequired()
+        .HasDefaultValueSql("nextval('\"DailyOrderNumber_Seq\"')");
     }
 }

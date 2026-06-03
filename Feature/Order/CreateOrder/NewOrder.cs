@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace beverage_order_system.Feature.Order.CreateOrder;
 
 public record Command() : IRequest<Result>;
-public record Result();
+public record Result(
+    Guid OrderId
+);
 
 public class NewOrder(
     AppDbContext dbContext
@@ -20,17 +22,17 @@ public class NewOrder(
             [FromBody]Command req
         ) =>
         {
-            return Results.Ok(await sender.Send(req));
+            var result = await sender.Send(req);
+            return Results.Created(string.Empty, result);
         })
         .WithName("Create New Order")
-        .Produces<Result>(StatusCodes.Status200OK);
+        .Produces<Result>(StatusCodes.Status201Created);
     }
 
     public async Task<Result> Handle (Command req, CancellationToken ct)
     {   
         var newOrder = new Model.Order
         {
-            DailyOrderNumber = new Random().Next(1, 100000),
             TotalAmount = 0,
             Status = Dto.OrderStatus.Pending,
             PayStatus = Dto.PaymentStatus.Unpaid
@@ -39,6 +41,6 @@ public class NewOrder(
         dbContext.Order.Add(newOrder);
         await dbContext.SaveChangesAsync(ct);
 
-        return new Result();
+        return new Result(OrderId: newOrder.Id);
     }
 }

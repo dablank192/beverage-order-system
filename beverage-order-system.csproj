@@ -31,6 +31,7 @@
     <Folder Include="Exception\" />
     <Folder Include="Exception\AuthException\" />
     <Folder Include="Exception\MenuException\" />
+    <Folder Include="Exception\OrderException\" />
     <Folder Include="Exception\UserException\" />
     <Folder Include="Feature\Auth\" />
     <Folder Include="Feature\Auth\RefreshToken\" />

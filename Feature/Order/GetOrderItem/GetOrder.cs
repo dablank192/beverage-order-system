@@ -74,6 +74,5 @@ public class GetOrder(
 
         return response;
 
-        //chưa test
     }
 }

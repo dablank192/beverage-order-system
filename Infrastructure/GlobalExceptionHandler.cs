@@ -2,6 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using beverage_order_system.Exception.AuthException;
 using beverage_order_system.Exception.MenuException;
+using beverage_order_system.Exception.OrderException;
 using beverage_order_system.Exception.UserException;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
@@ -54,6 +55,12 @@ public class GlobalExceptionHandler(
             context.Response.StatusCode = StatusCodes.Status200OK;
             problemDetail.Title = "User ID not found";
             problemDetail.Status = StatusCodes.Status200OK;
+        }
+        else if (exception is OrderNotFoundException)
+        {
+            context.Response.StatusCode = StatusCodes.Status200OK;
+            problemDetail.Title = "OrderId not found";
+            problemDetail.Status = StatusCodes.Status404NotFound;
         }
 
         

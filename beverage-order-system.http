@@ -66,11 +66,25 @@ Cookie: {{access_token}}
 DELETE {{beverage_order_system_HostAddress}}/api/v1/menu/3/delete
 Cookie: {{access_token}}
 
-### Create Item
+### Create Order
 POST {{beverage_order_system_HostAddress}}/api/v1/order/new-order
 Accept: application/json
 Content-Type: application/json
 
 {
     
+}
+
+###Get Order
+GET {{beverage_order_system_HostAddress}}/api/v1/order/019e98c5-cf46-7244-8aeb-6aadaf92779d/get-item
+Accept: application/json
+
+
+### Add Item
+POST {{beverage_order_system_HostAddress}}/api/v1/order/019e98c5-cf46-7244-8aeb-6aadaf92779d/new-order-item
+Accept: application/json
+Content-Type: application/json
+
+{
+    "productid": 1
 }

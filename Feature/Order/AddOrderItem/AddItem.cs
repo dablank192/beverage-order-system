@@ -1,4 +1,5 @@
 using System;
+using beverage_order_system.Exception.OrderException;
 using beverage_order_system.Infrastructure;
 using beverage_order_system.Model;
 using MediatR;
@@ -25,7 +26,7 @@ public class AddItem(
     {
         group.MapPost("/{orderId}/new-order-item", async(
             [FromServices]ISender sender,
-            [AsParameters]Guid orderId,
+            [FromRoute]Guid orderId,
             [FromBody]SubCommand req
         ) =>
         {
@@ -36,38 +37,40 @@ public class AddItem(
     }
 
     public async Task<Result> Handle(Command req, CancellationToken ct)
-    {        
-        var item = await dbContext.OrderItems.Where(t => t.OrderId == req.OrderId)
-        .Include(t => t.Order)
-        .FirstOrDefaultAsync(ct);
-
-        if(item?.ProductId == req.Data.ProductId)
-        {
-            item.Quantity += 1;
-        }
+    {
+        var item = await dbContext.Order
+        .Where(t => t.Id == req.OrderId)
+        .FirstOrDefaultAsync(ct)
+        ?? throw new OrderNotFoundException();
 
         var productPrice = await dbContext.Product.Where(t => t.Id == req.Data.ProductId)
         .Select(t => t.BasePrice)
         .FirstOrDefaultAsync(ct);
-        
-        var newOrderItem = new OrderItems
+
+        var existingItem = await dbContext.OrderItems.FirstOrDefaultAsync(t => t.OrderId == req.OrderId 
+        && t.ProductId == req.Data.ProductId, ct);
+
+        if (existingItem != null)
         {
-            ProductId = req.Data.ProductId,
-            OrderId = req.OrderId,
-            Quantity = 1,
-            UnitPrice = productPrice ?? default
-        };
+            existingItem.Quantity ++;
+        }
+        else
+        {    
+            var newOrderItem = new OrderItems
+            {
+                ProductId = req.Data.ProductId,
+                OrderId = req.OrderId,
+                Quantity = 1,
+                UnitPrice = productPrice ?? default
+            };
+            dbContext.OrderItems.Add(newOrderItem);
+        }
 
-        dbContext.OrderItems.Add(newOrderItem);
-
-
-        var totalPrice = item?.UnitPrice * item?.Quantity;
-        item?.Order?.TotalAmount = totalPrice;
+        item.TotalAmount = (item.TotalAmount ?? 0) + productPrice;
         
         await dbContext.SaveChangesAsync(ct);
 
         return new Result();
 
-        //Chưa Test
     }
 }

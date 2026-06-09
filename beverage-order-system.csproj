@@ -12,6 +12,9 @@
     <PackageReference Include="Carter" Version="10.0.0" />
     <PackageReference Include="FluentValidation" Version="12.1.1" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+    <PackageReference Include="Hangfire" Version="1.8.23" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.8.23" />
+    <PackageReference Include="Hangfire.PostgreSql" Version="1.21.1" />
     <PackageReference Include="Mapster" Version="10.0.7" />
     <PackageReference Include="MediatR" Version="14.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.8" />
@@ -42,6 +45,7 @@
     <Folder Include="Feature\Menu\UpdateMenuItem\" />
     <Folder Include="Feature\Order\" />
     <Folder Include="Feature\Order\AddOrderItem\" />
+    <Folder Include="Feature\Order\CleanOrderDaily\" />
     <Folder Include="Feature\Order\CreateOrder\" />
     <Folder Include="Feature\Order\GetOrderItem\" />
     <Folder Include="Infrastructure\" />

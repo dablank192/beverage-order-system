@@ -63,6 +63,10 @@ public class GlobalExceptionHandler(
             problemDetail.Status = StatusCodes.Status404NotFound;
         }
 
+        else if(exception is DeleteOrderJobException)
+        {
+            problemDetail.Title = "Cron job can not execute";
+        }
         
         if (env.IsDevelopment()) //Điều kiện để check xem api có đang ở trong môi trường development không?
         {

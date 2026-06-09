@@ -6,15 +6,20 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using FluentValidation;
 using Microsoft.IdentityModel.Tokens;
+using Hangfire;
+using Hangfire.PostgreSql;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+// Add Fluent validation validator
+
 builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
+
+
+// MediatR config
 
 builder.Services.AddMediatR(config =>
 {
@@ -22,21 +27,35 @@ builder.Services.AddMediatR(config =>
     config.AddOpenBehavior(typeof(ValidationBehaviour<,>));
 });
 
+
+// Exception Handler Config
+
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
 builder.Services.AddHttpContextAccessor();
 
+
+// Carter config
+
 builder.Services.AddCarter();
 
-var connectionString = builder.Configuration.GetConnectionString("Default");
 
+// Database config
+
+var connectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<AppDbContext>(option =>
 {
     option.UseNpgsql(connectionString);
 });
 
+
+// Dependencies register
+
 builder.Services.AddScoped<IHelper, Helper>();
+
+
+// Authentication config
 
 builder.Services.AddAuthentication(option =>
 {
@@ -74,6 +93,25 @@ builder.Services.AddAuthentication(option =>
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
 
+
+// Hangfire config
+
+builder.Services.AddHangfire(config =>
+{
+    config.UsePostgreSqlStorage(option =>
+    {
+        option.UseNpgsqlConnection(connectionString);
+    });
+});
+
+builder.Services.AddHangfireServer();
+
+HangfireConfig.RegisterRecurringJob(); //Hangfire job register
+
+
+
+// BUILD
+
 var app = builder.Build();
 
 app.UseExceptionHandler();
@@ -83,12 +121,14 @@ app.UseAuthorization();
 
 app.MapCarter();
 
+app.UseHangfireDashboard();
 
-// Configure the HTTP request pipeline.
+// HTTP request pipeline Config
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
 
 app.UseHttpsRedirection();
 

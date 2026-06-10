@@ -1,5 +1,5 @@
 @beverage_order_system_HostAddress = http://localhost:5234
-@access_token = x-access-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIwMTllNTVmYS1jYmI5LTdmM2MtYWZiYi00YmY5YmQzOTM0NzgiLCJVc2VybmFtZSI6Im5ndXllbiBkb2UxIiwiZXhwIjoxNzc5OTAxMzY4fQ.8kxG6O3d1kGdol-JOv9-8pjD_SnTq8gi9fla9oz_Hl4
+@access_token = x-access-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIwMTllNTVmYS1jYmI5LTdmM2MtYWZiYi00YmY5YmQzOTM0NzgiLCJVc2VybmFtZSI6Im5ndXllbiBkb2UxIiwiZXhwIjoxNzgxMTIwMjE2fQ.s69xac51Z5weR6Qx7VD531XSaFj0ki9-uI2kquGTuns
 @refresh_token = 
 
 GET {{beverage_order_system_HostAddress}}/weatherforecast/
@@ -86,5 +86,5 @@ Accept: application/json
 Content-Type: application/json
 
 {
-    "productid": 1
+    "productid": 3
 }

@@ -31,7 +31,7 @@ public class GetOrder(
     {
         group.MapGet("/{orderId}/get-item", async(
             [FromServices]ISender sender,
-            [AsParameters]Guid orderId,
+            [FromRoute]Guid orderId,
             [AsParameters]SubQuery req
         ) =>
         {

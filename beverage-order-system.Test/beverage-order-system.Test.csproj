@@ -32,6 +32,7 @@
     <Folder Include="Feature\Menu\UpdateMenuItem\" />
     <Folder Include="Feature\Order\" />
     <Folder Include="Feature\Order\CreateOrder\" />
+    <Folder Include="Feature\Order\GetOrder\" />
   </ItemGroup>
 
 </Project>

@@ -106,8 +106,6 @@ builder.Services.AddHangfire(config =>
 
 builder.Services.AddHangfireServer();
 
-HangfireConfig.RegisterRecurringJob(); //Hangfire job register
-
 
 
 // BUILD
@@ -120,6 +118,12 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapCarter();
+
+using (var scope = app.Services.CreateScope())
+{
+    var jobManager = scope.ServiceProvider.GetRequiredService<IRecurringJobManager>();
+    HangfireConfig.RegisterRecurringJob(jobManager);
+}
 
 app.UseHangfireDashboard();
 

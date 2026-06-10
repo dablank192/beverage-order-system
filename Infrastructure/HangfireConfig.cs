@@ -6,9 +6,9 @@ namespace beverage_order_system.Infrastructure;
 
 public static class HangfireConfig
 {
-    public static void RegisterRecurringJob()
+    public static void RegisterRecurringJob(IRecurringJobManager jobManager)
     {
-        RecurringJob.AddOrUpdate<DeleteOrderJob>(
+        jobManager.AddOrUpdate<DeleteOrderJob>(
             "delete-order-job",
             t => t.DeleteOrder(),
             Cron.Daily()

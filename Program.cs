@@ -8,6 +8,7 @@ using FluentValidation;
 using Microsoft.IdentityModel.Tokens;
 using Hangfire;
 using Hangfire.PostgreSql;
+using beverage_order_system.Feature.Order.CleanOrderDaily;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -105,6 +106,8 @@ builder.Services.AddHangfire(config =>
 });
 
 builder.Services.AddHangfireServer();
+
+builder.Services.AddTransient<DeleteOrderJob>();
 
 
 

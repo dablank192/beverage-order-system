@@ -30,9 +30,10 @@
     <Folder Include="Feature\Menu\DeleteMenuItem\" />
     <Folder Include="Feature\Menu\GetMenu\" />
     <Folder Include="Feature\Menu\UpdateMenuItem\" />
-    <Folder Include="Feature\Order\" />
+    <Folder Include="Feature\Order\AddOrderItem\" />
+    <Folder Include="Feature\Order\CleanOrderDaily\" />
     <Folder Include="Feature\Order\CreateOrder\" />
-    <Folder Include="Feature\Order\GetOrder\" />
+    <Folder Include="Feature\Order\GetOrderItem\" />
   </ItemGroup>
 
 </Project>

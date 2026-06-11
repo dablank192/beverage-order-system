@@ -18,11 +18,10 @@ public class DeleteOrderJob(
         {
             await dbContext.Database.ExecuteSqlRawAsync(sqlCommand);
         }
-        catch (System.Exception)
+        catch (System.Exception ex)
         {
-            throw new DeleteOrderJobException();
+            throw new System.Exception($"Error encounter when running cronjob, {ex}");
         }
     }
 
-    // Chua Test
 }
